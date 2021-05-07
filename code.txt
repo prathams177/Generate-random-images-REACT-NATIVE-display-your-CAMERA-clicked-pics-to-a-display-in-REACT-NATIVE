@@ -1,0 +1,116 @@
+import React from 'react';
+import {View,Text,StyleSheet, Button, TouchableOpacity, Alert, ImagePickerIOS} from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
+
+
+
+
+
+const Home=()=>{
+
+    const PickFromCamera = async ()=>{
+        const {granted} = await Permissions.askAsync(Permissions.CAMERA)
+        if(granted){
+            let data = await ImagePicker.launchCameraAsync({
+                mediaTypes:ImagePicker.MediaTypeOptions.Images,
+                allowsEditing:true,
+                aspect:[16,9],
+                quality:0.5
+
+
+            })
+            
+            
+        
+        }else{
+            Alert.alert('please allows permissions first ');
+
+        }
+    }
+
+
+
+    return(
+        <>
+    <View style={styles.home_main_container}>
+        <View style={styles.hometext}>
+            
+            <Text style={styles.maintext}>lets see hows you looks like . App will click your pic and pops up animal pic  </Text>
+            
+            
+        </View>
+        
+            <TouchableOpacity style={styles.bttn} onPress={()=> PickFromCamera()}>
+                <Text style={styles.bttntext}>click here</Text>
+                
+            </TouchableOpacity> 
+        
+    </View>
+        </>
+    );
+}
+
+export default Home;
+
+
+const styles=StyleSheet.create({
+    
+    
+    home_main_container:{
+        alignItems:'center',
+        justifyContent:'center',
+        flexDirection:'column',
+        flex:1,
+        
+
+    },
+
+    hometext:{
+        flex:2,
+        backgroundColor:'white',
+        width:400,
+        fontSize:78,
+        
+    },
+    homebttn:{
+        flex:1,
+        backgroundColor:'red',
+        width:400,
+        justifyContent:'center',
+        paddingLeft:77
+        
+        
+        
+
+    },
+
+    bttn:{
+        
+        width:230,
+        height:80,
+        fontSize:80,
+        backgroundColor:'rgb(118,74,188)',
+        borderRadius:40,
+        marginBottom:55,
+        alignContent:'center'
+        
+
+    },
+
+    bttntext:{
+        fontSize:45 , 
+        textAlign:'center',
+        paddingTop:11
+    },
+
+    maintext:{
+        fontSize:40,    
+        paddingLeft:50,
+        paddingRight:50,
+        alignItems:'center',
+        marginTop:160,
+    
+    }
+
+})
