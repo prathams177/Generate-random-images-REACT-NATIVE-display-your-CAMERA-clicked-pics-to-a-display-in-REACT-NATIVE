@@ -17,14 +17,7 @@ const Camera=()=>{
             setImage(result.uri)
         }
     }
-
-    // loader
-    // const startloading=()=>{
-    //     setLoading(true);
-    //     setTimeout(()=>{
-    //         setLoading(false);
-    //     },3000)
-    // };
+    
 
     const changeimage = appimg[Math.floor(Math.random()* appimg.length)];
                 
